@@ -15,21 +15,31 @@ class App extends Component {
    //console.log('was clisked!');
    this.setState({
      persons:[
-      { name: 'newName', age: 28 } ,
-      { name: 'Manu', age: 29 },
-      { name: 'Kumar singh', age: 29 }
+      { name: newName, age: 28 } ,
+      { name: 'Manu', age:  29 },
+      { name: 'Kumar singh', age: 27 }
 
      ]  
    })
-   
   }
 
+  nameChangeHandler = (event) => {
+    this.setState({
+      persons:[
+       { name: 'Max', age: 28 } ,
+       { name: event.target.value, age:  29 },
+       { name: 'Kumar singh', age: 27 }
+  
+      ]  
+    })
+  
+ }
 
-  render() {
+ render() {
     return (
       <div className="App">
       <h1> Hi , I am React App </h1>
-      <button onClick={() => this.switchNameHandler ('Maximilan!!!')}> 
+      <button onClick={() => this.switchNameHandler ('Maximilan!!')}> 
       Switch Name </button>  
       <Person
        name={this.state.persons[0].name}
@@ -37,7 +47,8 @@ class App extends Component {
       <Person
        name={this.state.persons[1].name}
        age={this.state.persons[1].age}
-       click={this.switchNameHandler.bind(this, 'Max!')} > My Hobbies :Racing </Person>
+       click={this.switchNameHandler.bind(this, 'Max!')} 
+       changed={this.nameChangeHandler}> My Hobbies :Racing </Person>
       <Person
         name={this.state.persons[2].name}
         age={this.state.persons[2].age}/>
